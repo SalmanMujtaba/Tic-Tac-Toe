@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/reset";
+@import "./assets/styles/variables";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.board {
+  display: grid;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  place-content: center; // Parent level
+  place-items: center; // Track level
+  grid-template-columns: repeat(3, auto);
+
+}
+
+.board__cell {
+  width: $cell-size;
+  display: flex;
+  place-content: center;
+  height: $cell-size;
+  // background-color: black;
+  border: 1px solid black;
+  &:first-of-type,
+  &:nth-child(2),
+  &:nth-child(3) {
+    border-top: none;
+  }
+  &:nth-child(3n+1) {
+    border-left: none;
+  }
+  &:nth-child(3n+3) {
+    border-right: none;
+  }
+  &:nth-child(7),
+  &:nth-child(8),
+  &:nth-child(9) {
+    border-bottom: none;
+  }
+}
+
+.board__cell--x::before,
+.board__cell--x::after {
+  content: '';
+  position: absolute;
+  width: calc(#{$mark-size} * 0.15);
+  height: $mark-size;
+  background-color: black;
+}
+
+.board__cell--x::before {
+  transform: rotate(45deg);
+}
+
+.board__cell--x::after {
+  transform: rotate(-45deg);
+}
+
+.board__cell--circle::before,
+.board__cell--circle::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.board__cell--circle::before {
+  width: $mark-size;
+  height: $mark-size;
+  background-color: black;
+}
+
+.board__cell--circle::after {
+  width: calc(#{$mark-size} * .7);
+  height: calc(#{$mark-size} * .7);
+  background-color: white;
+}
