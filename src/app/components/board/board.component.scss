@@ -4,11 +4,21 @@
   display: grid;
   position: relative;
   width: 100vw;
-  height: 90vh;
+  height: 70vh;
   place-content: center; // Parent level
   place-items: center; // Track level
   grid-template-columns: repeat(3, auto);
 
+}
+
+.turn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+strong {
+  font-size: 1.25rem;
 }
 
 .board__cell {
