@@ -1,6 +1,6 @@
 # TicTacToe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5. It can be viewed [here](https://tic-tac-toe-rouge-theta.vercel.app/).
 
 ## Development server
 
