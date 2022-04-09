@@ -1,9 +1,2 @@
-<div class="board" id="board">
-  <ng-container *ngFor="let item of items; index as i">
-    <div (click)="cellClick($event,i)" [id]="i" class="board__cell"></div>
-  </ng-container>
-</div>
-<div [ngClass]="hasGameEnded? 'winning-message--show':''" class="winning-message">
-  <div class="winning-message-text">{{winningMessage}}</div>
-  <button mat-raised-button (click)="initializeVariables()">Restart</button>
-</div>
+<app-board></app-board>
+<app-footer></app-footer>
