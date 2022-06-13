@@ -1,6 +1,7 @@
-<div #board class="board" id="board">
+<div #board (click)="cellClick($event)" class="board" id="board">
   <ng-container *ngFor="let item of items; index as i">
-    <div #cellss (click)="cellClick($event,i)" [id]="i" class="board__cell"></div>
+    <!-- <div #cellss (click)="cellClick($event,i)" [id]="i" class="board__cell"></div> -->
+    <div #cellss [id]="i" class="board__cell"></div>
   </ng-container>
   <strong class="turn">{{isCircleTurn? 'Circle': 'X'}}'s turn</strong>
 </div>

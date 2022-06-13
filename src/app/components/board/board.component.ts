@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements AfterViewInit {
+export class BoardComponent {
 
   title = 'tic-tac-toe';
   items: Array<number>;
@@ -32,16 +32,7 @@ export class BoardComponent implements AfterViewInit {
     this.initializeVariables();
 
   }
-  ngAfterViewInit() {
-    console.log(this.board);
-    console.log(this.cellss.length);
-    this.cellss.forEach(cell => {
-      console.log(cell.nativeElement);
-    });
-    // this.elementRef.nativeElement.query();
-    // console.log(this.boa);
 
-  }
   initializeVariables() {
     this.elementRef.nativeElement.querySelectorAll('.board__cell').forEach(cell => {
       this.renderer.removeClass(cell, this.circleClass);
@@ -69,11 +60,12 @@ export class BoardComponent implements AfterViewInit {
     ];
   }
 
-  cellClick($event, index) {
+  cellClick(event) {
+    let index = +event?.target?.id;
     if (!this.maintainUserClicks[index]) {
       this.cellsFilled++;
       this.currentClass = this.isCircleTurn ? this.circleClass : this.xClass;
-      this.placeMark($event.target, this.currentClass);
+      this.placeMark(event.target, this.currentClass);
       this.populateMap(index);
       this.checkResult();
       this.swapTurn();
