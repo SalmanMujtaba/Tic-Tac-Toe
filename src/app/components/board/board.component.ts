@@ -1,11 +1,11 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent {
+export class BoardComponent implements AfterViewInit {
 
   title = 'tic-tac-toe';
   items: Array<number>;
@@ -25,11 +25,23 @@ export class BoardComponent {
   winningMessage: string;
   hasGameEnded: boolean;
   gatherCells: Array<Element>;
+  @ViewChild('board') board: ElementRef;
+  @ViewChildren('cellss') cellss: QueryList<ElementRef>;
 
   constructor(protected renderer: Renderer2, protected elementRef: ElementRef) {
     this.initializeVariables();
-  }
 
+  }
+  ngAfterViewInit() {
+    console.log(this.board);
+    console.log(this.cellss.length);
+    this.cellss.forEach(cell => {
+      console.log(cell.nativeElement);
+    });
+    // this.elementRef.nativeElement.query();
+    // console.log(this.boa);
+
+  }
   initializeVariables() {
     this.elementRef.nativeElement.querySelectorAll('.board__cell').forEach(cell => {
       this.renderer.removeClass(cell, this.circleClass);

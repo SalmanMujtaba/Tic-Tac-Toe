@@ -1,9 +1,9 @@
-<div class="board" id="board">
+<div #board class="board" id="board">
   <ng-container *ngFor="let item of items; index as i">
-    <div (click)="cellClick($event,i)" [id]="i" class="board__cell"></div>
+    <div #cellss (click)="cellClick($event,i)" [id]="i" class="board__cell"></div>
   </ng-container>
+  <strong class="turn">{{isCircleTurn? 'Circle': 'X'}}'s turn</strong>
 </div>
-<strong class="turn">{{isCircleTurn? 'Circle': 'X'}}'s turn</strong>
 <div [ngClass]="hasGameEnded? 'winning-message--show':''" class="winning-message">
   <div class="winning-message-text">{{winningMessage}}</div>
   <button mat-raised-button (click)="initializeVariables()">Restart</button>

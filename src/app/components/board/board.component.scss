@@ -1,5 +1,4 @@
 @import "../../../assets/styles/variables";
-
 .board {
   display: grid;
   position: relative;
@@ -8,17 +7,16 @@
   place-content: center; // Parent level
   place-items: center; // Track level
   grid-template-columns: repeat(3, auto);
-
+  padding-bottom: 0.9375rem;
 }
 
 .turn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 0.9375rem;
 }
 
 strong {
   font-size: 1.25rem;
+  grid-column: 1/-1;
 }
 
 .board__cell {
